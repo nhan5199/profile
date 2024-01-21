@@ -17,8 +17,7 @@ const Header = () => {
   const [onExpand, setOnExpand] = useState(false);
   const [below850, setBelow850] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const headerHeightRef = useRef(null);
-  let headerHeight = useRef(0);
+
   const handleMouseEnterAboutMe = () => {
     setAboutMeHover(!aboutMeHover);
   };
@@ -42,10 +41,7 @@ const Header = () => {
       setIsMobile(window.innerWidth < 750); //this should be less than 600, but there is a bug
     }
 
-    headerHeight = 0;
-    console.log(headerHeight);
     window.addEventListener("resize", handleResize);
-
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -54,10 +50,9 @@ const Header = () => {
   return (
     <section>
       <div
-        ref={headerHeightRef}
-        className={`flex items-center justify-between m-auto p-1 ${
-          below850 ? "w-full p-4" : "w-11/12"
-        }`}
+        className={`flex items-center justify-between ease-in duration-300 m-auto p-1 
+        ${below850 ? "w-full p-4 hover:bg-gray-700" : "w-11/12"}
+        ${onExpand ? "bg-gray-800 " : ""}`}
       >
         <div className="logo flex flex-col items-center justify-between gap-3">
           <Link href="/">
@@ -81,17 +76,16 @@ const Header = () => {
 
         <div className="middle-nav text-base">
           <ul
-            className={`flex items-center justify-between gap-10 opacity-60 ${
+            className={`flex items-center justify-between gap-10 ease-in opacity-60 ${
               below850
                 ? onExpand
-                  ? `flex-col absolute top-${headerHeight} left-0 w-full`
+                  ? "flex-col absolute top-0 mt-[100px] left-0 w-full duration-300 bg-gray-800 justify-end"
                   : "flex-col mt-[-500px]"
                 : "flex-row"
             }
             `}
           >
             <Link
-              target="_blank"
               className={`flex items-center justify-center gap-2 ease-in duration-300 hover:text-green-600 ${
                 aboutMeHover ? "font-medium text-lg" : ""
               }`}
@@ -99,6 +93,7 @@ const Header = () => {
               alt="about me"
               onMouseEnter={handleMouseEnterAboutMe}
               onMouseLeave={handleMouseEnterAboutMe}
+              onClick={handleOnExpand}
             >
               <MdKeyboardDoubleArrowRight
                 className={`inline ${
@@ -117,12 +112,12 @@ const Header = () => {
               />
             </Link>
             <Link
-              target="_blank"
               className={`flex items-center justify-center gap-2 ease-in duration-300 hover:text-green-600 ${
                 myProjectsHover ? "font-medium text-lg" : ""
               }`}
               onMouseEnter={handleMouseEnterMyProjects}
               onMouseLeave={handleMouseEnterMyProjects}
+              onClick={handleOnExpand}
               href="/my-projects"
               alt="my projects"
             >
@@ -143,12 +138,12 @@ const Header = () => {
               />
             </Link>
             <Link
-              target="_blank"
               className={`flex items-center justify-center gap-2 ease-in duration-300 hover:text-green-600 ${
                 contactsHover ? "font-medium text-lg" : ""
               }`}
               onMouseEnter={handleMouseEnterContacts}
               onMouseLeave={handleMouseEnterContacts}
+              onClick={handleOnExpand}
               href="/contacts"
               alt="contact me"
             >
