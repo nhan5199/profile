@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
 
-const Introduction = () => {
+const Introduction = ({ id }) => {
   const listImgs = [1, 2, 3, 4];
   const quotes = [
     {
@@ -76,8 +76,11 @@ const Introduction = () => {
     },
   };
   return (
-    <div className="w-full h-full px-32 my-5 flex items-center justify-evenly gap-10">
-      <div className="intro-img w-1/3 flex items-center justify-center h-[85svh]">
+    <div
+      className="w-full h-full px-32 my-5 flex items-center justify-evenly gap-10"
+      id={id}
+    >
+      <div className="intro-img w-1/3 flex items-center justify-center h-[90svh]">
         <MotionImage
           src={`/images/image-section-${currentSlide}.png`}
           alt="title"
@@ -115,7 +118,7 @@ const Introduction = () => {
           variants={quoteContent}
           animate="animate"
           initial="initial"
-          className="text-gray-500 flex items-center text-2xl justify-center break-words"
+          className="text-gray-500 text-2xl text-center break-words"
         >
           {quotes[currentSlide - 1].content}
         </motion.div>

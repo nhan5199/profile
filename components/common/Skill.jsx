@@ -2,6 +2,25 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const Skill = () => {
+  const skillList = [
+    "HTML",
+    "CSS",
+    "Javascript",
+    "Typescript",
+    "Angular",
+    "React",
+    "Nextjs",
+    "Nodejs",
+    "SQL Server",
+    "Oracle",
+    "SQL",
+    "MVC",
+    "C#",
+    ".Net",
+    "FrontEnd",
+    "BackEnd",
+    "Fullstack",
+  ];
   const listMotion = {
     initial: { opacity: 0 },
     whileInView: {
@@ -23,111 +42,18 @@ const Skill = () => {
         whileInView="whileInView"
         className="flex items-center justify-center gap-2 flex-wrap my-5"
       >
-        <motion.p
-          whileHover={{ y: -10, transition: { duration: 0.5 } }}
-          variants={skillItem}
-          className="inline-block p-2 bg-gray-400 rounded-md  cursor-pointer"
-        >
-          HTML
-        </motion.p>
-        <motion.p
-          whileHover={{ y: -10, transition: { duration: 0.5 } }}
-          variants={skillItem}
-          className="inline-block p-2 bg-gray-400 rounded-md  cursor-pointer"
-        >
-          CSS
-        </motion.p>
-        <motion.p
-          whileHover={{ y: -10, transition: { duration: 0.5 } }}
-          variants={skillItem}
-          className="inline-block p-2 bg-gray-400 rounded-md  cursor-pointer"
-        >
-          Javascript
-        </motion.p>
-        <motion.p
-          whileHover={{ y: -10, transition: { duration: 0.5 } }}
-          variants={skillItem}
-          className="inline-block p-2 bg-gray-400 rounded-md  cursor-pointer"
-        >
-          Typescript
-        </motion.p>
-        <motion.p
-          whileHover={{ y: -10, transition: { duration: 0.5 } }}
-          variants={skillItem}
-          className="inline-block p-2 bg-gray-400 rounded-md  cursor-pointer"
-        >
-          Angular
-        </motion.p>
-        <motion.p
-          whileHover={{ y: -10, transition: { duration: 0.5 } }}
-          variants={skillItem}
-          className="inline-block p-2 bg-gray-400 rounded-md  cursor-pointer"
-        >
-          React
-        </motion.p>
-        <motion.p
-          whileHover={{ y: -10, transition: { duration: 0.5 } }}
-          variants={skillItem}
-          className="inline-block p-2 bg-gray-400 rounded-md  cursor-pointer"
-        >
-          Nextjs
-        </motion.p>
-        <motion.p
-          whileHover={{ y: -10, transition: { duration: 0.5 } }}
-          variants={skillItem}
-          className="inline-block p-2 bg-gray-400 rounded-md  cursor-pointer"
-        >
-          Nodejs
-        </motion.p>
-        <motion.p
-          whileHover={{ y: -10, transition: { duration: 0.5 } }}
-          variants={skillItem}
-          className="inline-block p-2 bg-gray-400 rounded-md  cursor-pointer"
-        >
-          SqlServer
-        </motion.p>
-        <motion.p
-          whileHover={{ y: -10, transition: { duration: 0.5 } }}
-          variants={skillItem}
-          className="inline-block p-2 bg-gray-400 rounded-md  cursor-pointer"
-        >
-          Oracle
-        </motion.p>
-        <motion.p
-          whileHover={{ y: -10, transition: { duration: 0.5 } }}
-          variants={skillItem}
-          className="inline-block p-2 bg-gray-400 rounded-md  cursor-pointer"
-        >
-          SQL
-        </motion.p>
-        <motion.p
-          whileHover={{ y: -10, transition: { duration: 0.5 } }}
-          variants={skillItem}
-          className="inline-block p-2 bg-gray-400 rounded-md  cursor-pointer"
-        >
-          MVC
-        </motion.p>
-        <motion.p
-          whileHover={{ y: -10, transition: { duration: 0.5 } }}
-          variants={skillItem}
-          className="inline-block p-2 bg-gray-400 rounded-md  cursor-pointer"
-        >
-          FrontEnd
-        </motion.p>
-        <motion.p
-          whileHover={{ y: -10, transition: { duration: 0.5 } }}
-          variants={skillItem}
-          className="inline-block p-2 bg-gray-400 rounded-md  cursor-pointer"
-        >
-          BackEnd
-        </motion.p>
-        <motion.p
-          whileHover={{ y: -10, transition: { duration: 0.5 } }}
-          variants={skillItem}
-          className="inline-block p-2 bg-gray-400 rounded-md  cursor-pointer"
-        >
-          Fullstack
-        </motion.p>
+        {skillList.map((item, index) => {
+          return (
+            <motion.p
+              whileHover={{ y: -10, transition: { duration: 0.5 } }}
+              variants={skillItem}
+              className="inline-block p-2 bg-gray-400 rounded-md  cursor-pointer"
+              key={index}
+            >
+              {item}
+            </motion.p>
+          );
+        })}
       </motion.ul>
     </div>
   );

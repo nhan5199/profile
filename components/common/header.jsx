@@ -5,10 +5,33 @@ import { IoIosMail } from "react-icons/io";
 import { FaLinkedin } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const Header = () => {
+  const [displayHeader, setDisplayHeader] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPosition = window.scrollY;
+      // Adjust based on your needs: use previous position or a threshold
+      console.log("data: ", currentScrollPosition);
+      if (currentScrollPosition > 200) {
+        setDisplayHeader(false);
+      } else {
+        setDisplayHeader(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
-    <header className="relative w-10/12 m-auto px-10 py-5 flex items-center justify-between">
+    <header
+      className={`w-full m-auto px-32 py-5 flex items-center justify-between fixed top-0 z-10 bg-white duration-500 ease-in hover:opacity-100 ${
+        displayHeader ? "opacity-100" : "opacity-0"
+      }`}
+    >
       <nav className="left-menu flex items-center justify-between gap-5 ease-in">
         <HeaderLink title="About me" href="about" />
         <HeaderLink title="My projects" href="my-projects" />
